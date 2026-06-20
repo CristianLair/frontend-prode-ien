@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  /* Superficie */
+  --bg: #0f0e17;
+  --bg-elevated: #1a1825;
+  --bg-elevated-hover: #221f30;
+  --bg-input: #15131f;
+  --border: #2c2838;
+  --border-strong: #3d3850;
+
+  /* Marca */
+  --primary: #8c43ef;
+  --primary-hover: #9b5cf3;
+  --primary-soft: #8c43ef1a;
+  --accent: #3097d1;
+  --accent-soft: #3097d11a;
+
+  /* Estado */
+  --success: #5cb85c;
+  --success-soft: #5cb85c1a;
+  --danger: #d9534f;
+  --danger-soft: #d9534f1a;
+  --warning: #f0ad4e;
+  --warning-soft: #f0ad4e1a;
+
+  /* Texto */
+  --text: #f1eff7;
+  --text-muted: #8b879c;
+  --text-faint: #5c5870;
+
+  /* Tipografía */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+/* Fondo con textura sutil de cancha, no flat puro */
+.field-texture {
+  background-image:
+    linear-gradient(180deg, var(--bg) 0%, #131220 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 119px,
+      rgba(140, 67, 239, 0.035) 119px,
+      rgba(140, 67, 239, 0.035) 120px
+    );
+}
+
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scrollbar discreto, modo oscuro */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-faint);
+}
+
+.hero-bg{
+background-image:linear-gradient(rgba(20,0,35,.65),rgba(20,0,35,.85)),url('/landing-full.jpeg');
+background-size:cover;background-position:center;
+}
+.score-input::-webkit-outer-spin-button,
+.score-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.score-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
