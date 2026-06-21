@@ -3,7 +3,7 @@ export default function Home(){return (
 <div className="min-h-screen flex items-center">
 <div className="max-w-6xl mx-auto px-6">
 <div className="max-w-3xl">
-<div className="inline-block border px-4 py-2 rounded mb-4">PRODEIEN</div>
+<div className="inline-block border px-4 py-2 rounded mb-4">PRODE</div>
 <h1 className="text-6xl font-bold mb-6">Viví el torneo como nunca antes</h1>
 <p className="text-xl mb-8">Pronosticá resultados, competí en rankings y seguí la tabla de grupos en tiempo real.</p>
 <div className="flex gap-4">
