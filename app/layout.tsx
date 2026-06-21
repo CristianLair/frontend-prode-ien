@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import InstallPwaPopup from "@/components/InstallPwaPopup";
 import "flag-icons/css/flag-icons.min.css";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth-context";
@@ -38,7 +39,10 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          {children}
+          <InstallPwaPopup />
+        </AuthProvider>
       </body>
     </html>
   );
