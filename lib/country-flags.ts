@@ -78,6 +78,9 @@ export const COUNTRY_TO_ISO: Record<string, string> = {
   "Irlanda del Norte": "gb-nir",
   "Albania": "al",
   "Eslovaquia": "sk",
+  "Bosnia y Herzegovina": "ba",
+  "Bosnia-Herzegovina": "ba",
+  "Bosnia": "ba",
 
   // Conmebol/Asia (AFC)
   "Japón": "jp",
