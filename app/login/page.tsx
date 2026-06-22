@@ -11,6 +11,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   const { login } = useAuth();
   const router = useRouter();
 
@@ -18,11 +20,16 @@ export default function LoginPage() {
     e.preventDefault();
     setError(null);
     setLoading(true);
+
     try {
       await login(user, password);
       router.push("/partidos");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "No se pudo iniciar sesión");
+      setError(
+        err instanceof Error
+          ? err.message
+          : "No se pudo iniciar sesión"
+      );
     } finally {
       setLoading(false);
     }
@@ -35,6 +42,7 @@ export default function LoginPage() {
           <h1 className="font-display font-bold text-4xl tracking-tight">
             PRODE<span className="text-[var(--primary)]">IEN</span>
           </h1>
+
           <p className="text-[var(--text-muted)] text-sm mt-2 font-mono">
             MUNDIAL 2026 · PRONÓSTICOS
           </p>
@@ -54,25 +62,45 @@ export default function LoginPage() {
             autoComplete="username"
             required
           />
-          <Input
-            id="password"
-            label="Contraseña"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-            required
-          />
+
+          <div>
+            <Input
+              id="password"
+              label="Contraseña"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+              required
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="mt-2 text-xs text-[var(--accent)] hover:underline"
+            >
+              {showPassword
+                ? "👁 Ocultar contraseña"
+                : "👁 Mostrar contraseña"}
+            </button>
+          </div>
 
           <Button type="submit" disabled={loading} fullWidth>
             {loading ? "Ingresando…" : "Acceder"}
           </Button>
 
           <div className="flex justify-between text-xs text-[var(--text-muted)] pt-1">
-            <Link href="/reset-password" className="hover:text-[var(--accent)]">
+            <Link
+              href="/reset-password"
+              className="hover:text-[var(--accent)]"
+            >
               Olvidé mi contraseña
             </Link>
-            <Link href="/registro" className="hover:text-[var(--accent)]">
+
+            <Link
+              href="/registro"
+              className="hover:text-[var(--accent)]"
+            >
               Crear cuenta
             </Link>
           </div>
